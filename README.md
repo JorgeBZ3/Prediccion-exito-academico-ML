@@ -72,8 +72,8 @@ Probado con **Python 3.12**.
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/<tu-usuario>/<nombre-del-repo>.git
-cd <nombre-del-repo>
+git clone https://github.com/JorgeBZ3/Prediccion-exito-academico-ML.git
+cd Prediccion-exito-academico-ML
 
 # 2. Crear y activar el entorno virtual
 python -m venv .venv
