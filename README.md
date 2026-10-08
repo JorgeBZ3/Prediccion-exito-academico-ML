@@ -87,10 +87,9 @@ python -m pip install -r requirements.txt
 ```
 
 
-```bash
-# Los resultados del proyecto se encuentran en los notebooks
-# abrir los notebooks de cada tarea
-```
+
+Los resultados del proyecto se encuentran en los notebooks, abrir los notebooks de cada tarea para ver los resultados.
+
 
 ### Dependencias principales
 
