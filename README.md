@@ -20,12 +20,10 @@ Análisis de un dataset real de **4.424 estudiantes** para anticipar el abandono
 - **Tamaño:** 4.424 instancias y 37 variables (demográficas, académicas previas, socioeconómicas, macroeconómicas y de rendimiento del 1.º y 2.º semestre). Sin valores nulos.
 - **Variable objetivo desbalanceada:** Graduado 49,9 % · Abandono 32,1 % · Matriculado 17,9 %. Por eso la métrica principal es el **F1-macro** y no la accuracy.
 
-> El dataset no se incluye en el repositorio. Descárgalo desde la fuente y colócalo en `data/` (ver [Cómo ejecutarlo](#cómo-ejecutarlo)).
-
 ## Metodología
 
 **Preprocesado común**
-- One-hot encoding con `drop_first=True` (de 25 a 147 columnas en clasificación).
+- One-hot encoding (de 25 a 147 columnas en clasificación).
 - Estandarización con `StandardScaler` ajustado **solo con el conjunto de entrenamiento**, para evitar fuga de información.
 - Permutación aleatoria y split 80/20 reproducible (3.539 / 885 instancias en clasificación).
 - **Prevención de data leakage** en regresión: se excluyen todas las variables del 2.º semestre y la variable objetivo.
@@ -65,11 +63,8 @@ K-Means sobre 14 variables de perfil (7 numéricas y 7 categóricas binarias) tr
 
 ## Limitaciones
 
-- Los modelos son lineales o de baja complejidad. Un modelo de boosting probablemente mejoraría el rendimiento a costa de interpretabilidad.
+- Los modelos son lineales o de baja complejidad. 
 - El dataset no recoge motivación, carga laboral ni situación familiar, que previsiblemente explican parte de la varianza residual.
-- El silhouette de 0,27 indica solapamiento moderado entre clusters, así que los casos frontera deben tratarse con cautela.
-- Los datos proceden de una única institución, por lo que la generalización requiere validación externa.
-- Las asociaciones encontradas (por ejemplo, entre deuda y abandono) no implican causalidad.
 
 ## Cómo ejecutarlo
 
@@ -91,41 +86,25 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-Después, descarga el dataset y colócalo en la carpeta `data/`. <!-- TODO: indica el nombre exacto del archivo, por ejemplo data/dataset.csv -->
-
-Para reproducir cada tarea: <!-- TODO: sustituye por tus comandos o notebooks reales -->
 
 ```bash
-# Ejemplo (adapta a tu estructura real)
-jupyter notebook   # abrir los notebooks de cada tarea
-# o bien
-python tarea1_clasificacion.py
+# Los resultados del proyecto se encuentran en los notebooks
+# abrir los notebooks de cada tarea
 ```
 
 ### Dependencias principales
 
-`numpy 2.5.3` · `pandas 3.0.6` · `scikit-learn 1.9.1` · `matplotlib 3.11.2` · `seaborn 0.13.2`
+`numpy 2.5.3` · `pandas 3.0.6` · `scikit-learn 1.9.1` · `matplotlib 3.11.2` · `seaborn 0.13.2` · `ipykernel==7.4.0`
 
 ## Estructura del repositorio
 
 <!-- TODO: ajusta a tu estructura real -->
 ```
 .
-├── data/                  # dataset (no incluido en el repositorio)
+├── data/                  # dataset 
 ├── notebooks/             # análisis y experimentos de cada tarea
 ├── src/                   # implementación propia de la regresión logística multinomial
-├── informe_final_ML.pdf   # informe completo del proyecto
 ├── requirements.txt
 └── README.md
 ```
 
-## Autor
-
-**Jorge Beltrán Zamora** · Ingeniería Matemática e Inteligencia Artificial, Comillas ICAI
-[LinkedIn](https://www.linkedin.com/in/tu-usuario) · [GitHub](https://github.com/tu-usuario)
-
-## Referencias
-
-1. Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2022). Predicting Student Dropout and Academic Success. *Data*, 7(11), 146.
-2. Pedregosa, F. et al. (2011). Scikit-learn: Machine Learning in Python. *Journal of Machine Learning Research*, 12, 2825–2830.
-3. Murphy, K. P. (2022). *Probabilistic Machine Learning: An Introduction*. MIT Press.
